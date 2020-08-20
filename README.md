@@ -1,6 +1,6 @@
 # bestbuy_flutter
 
-A new Flutter application.
+一个为了学习 Flutter 而生的项目
 
 ## Getting Started
 
