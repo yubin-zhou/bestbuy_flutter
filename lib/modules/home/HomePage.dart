@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bestbuy_flutter/modules/home/widgets/HomePageSearchView.dart';
 import 'package:bestbuy_flutter/modules/search/SearchResultPage.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +29,7 @@ class _HomeState extends State<HomePage> {
   // 点击搜索框跳转
   void clickSearchView() {
     print("点击搜索了");
+    log("asdasdasdasdasd");
     Navigator.push(
         context,
         MaterialPageRoute(
