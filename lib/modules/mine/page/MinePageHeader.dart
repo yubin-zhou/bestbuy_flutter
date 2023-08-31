@@ -15,7 +15,7 @@ class MinePageHeader extends StatefulWidget {
   }
 }
 
-class _MinePageHeader extends State<MinePageHeader> {
+class _MinePageHeader extends State<MinePageHeader> with AutomaticKeepAliveClientMixin{
   double _h = 0;
   double _imageSize = 55;
   List<MineItemModel> _items(){
@@ -33,6 +33,7 @@ class _MinePageHeader extends State<MinePageHeader> {
   Widget build(BuildContext context) {
     _h = 20 + 55 * Screen.width(context) / 375.0 + 46 + 100;
     _imageSize = 55 * Screen.width(context) / 375.0;
+    print("MinePageHeader===build");
     return SliverList(
       delegate:
       new SliverChildBuilderDelegate((BuildContext context, int index) {
@@ -83,7 +84,7 @@ class _MinePageHeader extends State<MinePageHeader> {
 
 
   Widget _headerView(BuildContext context) {
-    return new Container(
+    return Container(
       width: Screen.width(context),
       height: _h,
       child: _headerViewContent(),
@@ -306,4 +307,8 @@ class _MinePageHeader extends State<MinePageHeader> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

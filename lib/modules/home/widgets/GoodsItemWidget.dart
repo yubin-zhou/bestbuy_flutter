@@ -15,9 +15,10 @@ class GoodsItemWidget extends StatefulWidget {
   }
 }
 
-class _GoodsItemWidget extends State<GoodsItemWidget> {
+class _GoodsItemWidget extends State<GoodsItemWidget>  with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
+    print("GoodsItemWidget===build");
     return Container(
       color: Colors.white,
       child: Column(
@@ -193,4 +194,8 @@ class _GoodsItemWidget extends State<GoodsItemWidget> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

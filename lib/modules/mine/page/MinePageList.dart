@@ -18,6 +18,7 @@ class _MinePageList extends State<MinePageList>{
      double itemH = itemW + 150;
      double ratio = itemW / itemH;
      List list = TestUtils.getDataList();
+     print("MinePageList===build");
     return SliverPadding(
       padding: EdgeInsets.all(10),//边距
       sliver: SliverGrid( //Grid

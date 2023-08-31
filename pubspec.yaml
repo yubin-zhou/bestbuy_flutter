@@ -30,7 +30,10 @@ dependencies:
   # json
   json_serializable: ^3.4.0
   # 富文本
-  extended_text: ^3.0.1
+  extended_text: ^5.0.0
+
+  flutter_redux: ^0.8.0
+
 
 dev_dependencies:
   flutter_test:

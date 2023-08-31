@@ -1,3 +1,4 @@
+import 'package:bestbuy_flutter/main/Draw_board_page2.dart';
 import 'package:bestbuy_flutter/main/TestPage.dart';
 import 'package:bestbuy_flutter/main/widgets/YBAppBar.dart';
 import 'package:bestbuy_flutter/modules/mine/page/MinePageHeader.dart';
@@ -18,6 +19,7 @@ class MinePage extends StatefulWidget {
 class _MinePage extends State<MinePage> {
   @override
   Widget build(BuildContext context) {
+    print("MinePage===build");
     return AnnotatedRegion(
       value: SystemUiOverlayStyle.light, // 设置状态栏颜色
       child: Scaffold(
@@ -81,6 +83,13 @@ class _MinePage extends State<MinePage> {
 
   void setIconBtn() {
     print("几岁");
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => TestPage()));
+    // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => TestPage()));
+    // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Draw_board_page1()));
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Draw_board_page2()));
+
+
+
+
+
   }
 }
