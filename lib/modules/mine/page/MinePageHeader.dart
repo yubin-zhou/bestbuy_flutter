@@ -14,7 +14,6 @@ class MinePageHeader extends StatefulWidget {
     return _MinePageHeader();
   }
 }
-
 class _MinePageHeader extends State<MinePageHeader> with AutomaticKeepAliveClientMixin{
   double _h = 0;
   double _imageSize = 55;

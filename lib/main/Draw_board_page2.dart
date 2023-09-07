@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 /**
@@ -17,76 +19,38 @@ class Draw_board_page2 extends StatefulWidget {
 }
 
 class _Draw_board_page2State extends State<Draw_board_page2> {
+  String text = "12";
+  List<String> list;
 
-  final List<Path> _paths = [];
-  Path _current;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    list = ["我","知道","哈","随机","整数","你","，","。","方法","好"];
+    final stream = Stream.periodic(Duration(milliseconds: 200),(_)=>list[Random().nextInt(10)]);
+    stream.listen((event) {
+      text = text + event;
+      if(mounted){
+        setState(() {
+
+        });
+      }
+
+    });
+
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("画线"),
       ),
-      body: GestureDetector(
-        onPanDown: (detail){
-          setState(() {
-            _current = Path();
-            _paths..add(_current);
-            if(_current!=null){
-              _current.moveTo(detail.localPosition.dx, detail.localPosition.dy);
-            }
-          });
-        },
-        onPanUpdate: (detail){
-          setState(() {
-            if(_current!=null){
-              _current.lineTo(detail.localPosition.dx, detail.localPosition.dy);
-            }
-          });
-        },
-        onPanEnd: (detail){
-          _current = null;
-        },
-        child: Container(
-          color: Colors.white,
-          width: double.infinity,
-          height: double.infinity,
-          child: CustomPaint(
-            painter: SketchPainter(_paths),
-          ),
-        ),
-      ),
+      body: Text(text),
     );
 
   }
 }
-class SketchPainter extends CustomPainter{
 
-
-  final List<Path> paths;
-  SketchPainter(this.paths);
-  static final pen = Paint()
-  ..color = Colors.red
-  ..style = PaintingStyle.stroke
-  ..strokeWidth = 2.0;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    if(paths.isEmpty){
-      return;
-    }
-    for(int i = 0; i < paths.length - 1; i++){
-      if(paths[i]!=null && paths[i+1]!=null){
-        canvas.drawPath(paths[i], pen);
-      }
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    // TODO: implement shouldRepaint
-    return true;
-  }
-  
-}
 
  

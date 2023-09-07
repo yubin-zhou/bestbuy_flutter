@@ -2,20 +2,26 @@ PODS:
   - Flutter (1.0.0)
   - image_picker (0.0.1):
     - Flutter
+  - yb_alertview_plugin (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - yb_alertview_plugin (from `.symlinks/plugins/yb_alertview_plugin/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
   image_picker:
     :path: ".symlinks/plugins/image_picker/ios"
+  yb_alertview_plugin:
+    :path: ".symlinks/plugins/yb_alertview_plugin/ios"
 
 SPEC CHECKSUMS:
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   image_picker: 9c3312491f862b28d21ecd8fdf0ee14e601b3f09
+  yb_alertview_plugin: 6d7a26af2297554614ece8adda6e9aead35dbe14
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
