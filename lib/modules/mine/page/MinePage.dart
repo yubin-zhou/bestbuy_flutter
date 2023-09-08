@@ -1,5 +1,5 @@
-import 'package:bestbuy_flutter/main/Draw_board_page2.dart';
-import 'package:bestbuy_flutter/main/TestPage.dart';
+import 'package:bestbuy_flutter/demo/Draw_board_page2.dart';
+import 'package:bestbuy_flutter/demo/TestPage.dart';
 import 'package:bestbuy_flutter/main/widgets/YBAppBar.dart';
 import 'package:bestbuy_flutter/modules/mine/page/MinePageHeader.dart';
 import 'package:bestbuy_flutter/modules/mine/page/MinePageList.dart';
@@ -83,9 +83,9 @@ class _MinePage extends State<MinePage> {
 
   void setIconBtn() {
     print("几岁");
-    // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => TestPage()));
-    // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Draw_board_page1()));
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Draw_board_page2()));
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => TestPage()));
+
+   // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Draw_board_page2()));
 
 
 
