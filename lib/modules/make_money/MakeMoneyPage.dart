@@ -1,4 +1,6 @@
 import 'package:bestbuy_flutter/demo/Draw_board_page1.dart';
+import 'package:bestbuy_flutter/demo/flutter_add_native_view.dart';
+import 'package:bestbuy_flutter/modules/order/OrderPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -60,10 +62,13 @@ class _MakeMoneyPage extends State<MakeMoneyPage> {
          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Draw_board_page1()));
          break;
        case 1:
+         Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => OrderPage()));
          break;
        case 2:
+         Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => OrderPage()));
          break;
        case 3:
+         Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => flutter_add_native_view()));
          break;
        case 4:
          break;
