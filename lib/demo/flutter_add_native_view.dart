@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -49,13 +51,17 @@ class _flutter_add_native_viewState extends State<flutter_add_native_view> {
   }
 
   Widget _nativeView() {
-    if (defaultTargetPlatform == TargetPlatform.iOS) {
-      return UiKitView(
-        viewType: "native_for_ios_view_label",
-        creationParams: {"text","iOS navite view"},
-        creationParamsCodec:  const StandardMessageCodec()
+    if (Platform.isIOS) {
+      return Container(
+        height: 200,
+        width: double.infinity,
+        child:  UiKitView(
+            viewType: "native_for_ios_view_label",
+            creationParams: {"text":"我是来自Flutter 页面的参数"},
+            creationParamsCodec:  const StandardMessageCodec()
+        ),
       );
-    } else if (defaultTargetPlatform == TargetPlatform.android) {
+    } else if (Platform.isAndroid) {
 
     }else{
       return Text("Not supported");
