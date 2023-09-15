@@ -22,6 +22,8 @@ class flutter_add_native_view extends StatefulWidget {
 }
 
 class _flutter_add_native_viewState extends State<flutter_add_native_view> {
+
+   MethodChannel _channel = null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +35,16 @@ class _flutter_add_native_viewState extends State<flutter_add_native_view> {
         children: [
           _flutterView(),
           _nativeView(),
+          GestureDetector(
+            onTap: (){
+              _channel.invokeMethod("setText",{"name":"张三","age":"18"});
+            },
+            child: Container(
+              width: double.infinity,
+              height: 40,
+              child: Text("给原生传参数"),
+            ),
+          ),
         ],
       ),
     );
@@ -58,6 +70,10 @@ class _flutter_add_native_viewState extends State<flutter_add_native_view> {
         child: UiKitView(
             viewType: "native_for_ios_view_label",
             creationParams: {"text": "我是来自Flutter 页面的参数"},
+            onPlatformViewCreated: (viewId){
+              print("Fluutet viewId:$viewId");
+              _channel = MethodChannel("native_for_ios_view_label");
+            },
             creationParamsCodec: const StandardMessageCodec()),
       );
     } else if (Platform.isAndroid) {
@@ -67,6 +83,11 @@ class _flutter_add_native_viewState extends State<flutter_add_native_view> {
         child: AndroidView(
           viewType: "native_for_ios_view_label",
           creationParams: {"text": "我是来自Flutter 页面的参数"},
+          onPlatformViewCreated: (viewId){
+            print("Fluutet viewId:$viewId");
+            _channel = MethodChannel("native_for_ios_view_label");
+
+          },
           creationParamsCodec: const StandardMessageCodec(),
         ),
       );

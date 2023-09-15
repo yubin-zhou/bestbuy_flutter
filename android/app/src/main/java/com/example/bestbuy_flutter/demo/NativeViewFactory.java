@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.Map;
 
+import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MessageCodec;
 import io.flutter.plugin.common.StandardMessageCodec;
 import io.flutter.plugin.platform.PlatformView;
@@ -16,14 +17,19 @@ import io.flutter.plugin.platform.PlatformViewFactory;
  * @Description :TODO
  */
 public class NativeViewFactory extends PlatformViewFactory {
-    public NativeViewFactory() {
+    
+    BinaryMessenger messenger;
+    public NativeViewFactory(BinaryMessenger messenger) {
         super(StandardMessageCodec.INSTANCE);
+        this.messenger = messenger;
     }
+
+
 
     @Override
     public PlatformView create(Context context, int viewId, Object args) {
         final Map<String,Object> params = (Map<String, Object>) args;
-        return  new NativeView(context,viewId,params);
+        return  new NativeView(context,viewId,params,messenger);
 
     }
 }
