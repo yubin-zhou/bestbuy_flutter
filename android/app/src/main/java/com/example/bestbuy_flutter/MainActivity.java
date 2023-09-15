@@ -14,8 +14,9 @@ public class MainActivity extends FlutterActivity {
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
         super.configureFlutterEngine(flutterEngine);
-        PlatformViewRegistry registry =  flutterEngine.getPlatformViewsController().getRegistry();
-        NativeViewFactory factory = new NativeViewFactory(flutterEngine.getDartExecutor().getBinaryMessenger());
-        registry.registerViewFactory(viewId,factory);
+        flutterEngine
+                .getPlatformViewsController()
+                .getRegistry()
+                .registerViewFactory(viewId,new NativeViewFactory(flutterEngine.getDartExecutor().getBinaryMessenger()));
     }
 }

@@ -3,6 +3,7 @@ package com.example.bestbuy_flutter.demo;
 import android.content.Context;
 import android.graphics.Color;
 import android.service.autofill.TextValueSanitizer;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,31 +23,36 @@ import io.flutter.plugin.platform.PlatformView;
  * @Date 2023/09/15
  * @Description :TODO
  */
-public class NativeView implements PlatformView {
+public class NativeView implements PlatformView, MethodChannel.MethodCallHandler {
 
     private final TextView textView;
 
-    NativeView(Context context, int id, Map<String,Object> params, BinaryMessenger messenger){
-        MethodChannel channel = new MethodChannel(messenger,"native_for_ios_view_label");
+    NativeView(Context context, int id, Map<String, Object> params, BinaryMessenger messenger) {
+        MethodChannel channel = new MethodChannel(messenger, "native_for_ios_view_label");
         String p = params.get("text").toString();
         textView = new TextView(context);
         textView.setTextSize(23);
-        textView.setBackgroundColor(Color.rgb(255,255,255));
+        textView.setBackgroundColor(Color.rgb(255, 255, 255));
         textView.setText("Rendered on a native Android view (Flutter 参数: " + p + ")");
-        channel.setMethodCallHandler(new MethodChannel.MethodCallHandler() {
-            @Override
-            public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
-                if(call.method == "setText"){
-                    Map m = (Map) call.arguments;
-                    String name = (String) m.get("name");
-                    String age = (String) m.get("age");
-                    String str = "我是原生动态传的参数："+"name:"+name +"  age:"+age;
-                    textView.setText(str);
-
-                }
-            }
-        });
+        channel.setMethodCallHandler(this);
     }
+
+    @Override
+    public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
+        if (call.method.equals("setText")) {
+            Log.i("NativeView", "onMethodCall: ");
+            Map m = (Map) call.arguments;
+            String name = (String) m.get("name");
+            String age = (String) m.get("age");
+            String str = "我是原生动态传的参数：" + "name:" + name + "  age:" + age;
+            textView.setText(str);
+            result.success("成功收到参数："+str);
+
+        }else{
+            result.notImplemented();
+        }
+    }
+
     @Override
     public View getView() {
         return textView;
@@ -57,4 +63,6 @@ public class NativeView implements PlatformView {
     public void dispose() {
 
     }
+
+
 }
