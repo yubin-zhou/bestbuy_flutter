@@ -55,17 +55,23 @@ class _flutter_add_native_viewState extends State<flutter_add_native_view> {
       return Container(
         height: 200,
         width: double.infinity,
-        child:  UiKitView(
+        child: UiKitView(
             viewType: "native_for_ios_view_label",
-            creationParams: {"text":"我是来自Flutter 页面的参数"},
-            creationParamsCodec:  const StandardMessageCodec()
-        ),
+            creationParams: {"text": "我是来自Flutter 页面的参数"},
+            creationParamsCodec: const StandardMessageCodec()),
       );
     } else if (Platform.isAndroid) {
-
-    }else{
+      return Container(
+        height: 200,
+        width: double.infinity,
+        child: AndroidView(
+          viewType: "native_for_ios_view_label",
+          creationParams: {"text": "我是来自Flutter 页面的参数"},
+          creationParamsCodec: const StandardMessageCodec(),
+        ),
+      );
+    } else {
       return Text("Not supported");
-
     }
   }
 }

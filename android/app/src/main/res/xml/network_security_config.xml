@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <!-- 信任系统预装 CA 证书 -->
+            <certificates src="system" />
+            <!-- 信任用户添加的 CA 证书，Charles 和 Fiddler 抓包工具安装的证书属于此类 -->
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
